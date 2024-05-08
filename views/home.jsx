@@ -6,6 +6,13 @@ function home() {
     <Def>
       <main>
         <h1> Home </h1>
+        <div>
+          <img src="images/vegi-sanguiches.jpg" alt="Image" />
+          <div>
+            Photo by <a href="https://unsplash.com/photos/assorted-fruits-and-vegetable-on-brown-wooden-chopping-board-2IxTgsgFi-s">
+              Ella Olsson </a> on <a href="https://unsplash.com/"> Unsplash </a>
+          </div>
+        </div>
         <a href="/places">
           <button className="btn-primary">Places Page</button>
         </a>
