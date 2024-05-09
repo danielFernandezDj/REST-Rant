@@ -24,7 +24,7 @@ function new_form() {
                         <input id="state" name="state" />
                     </div>
                     <div>
-                        <label htmlFor="cuisines"> Cuisines </label>
+                        <label htmlFor="cuisines"> Place Name </label>
                         <input id="cuisines" name="cuisines" required />
                     </div>
                     <input type="submit" value="Add Place" />
