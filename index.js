@@ -1,13 +1,14 @@
+// Modules and Globals.
 require('dotenv').config()
 const express = require('express')
 const app = express()
 
 // Express Settings
+app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 // app.use(express.urlencoded({ extended: true }))
-// app.set('views', __dirname + '../rest-rant/views')
 
 // Controllers & Routes
 app.use('/places', require('./controllers/places'))
@@ -22,7 +23,7 @@ app.get('*', (req, res) => {
     res.status(404).render('error404')
 })
 
-// To live the server open
+// Listen for connection.
 app.listen(process.env.PORT)
 
 
