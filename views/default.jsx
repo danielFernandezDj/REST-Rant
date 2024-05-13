@@ -10,6 +10,9 @@ function Def (html) {
             </head>
             <body>
                 { html.children }
+                <footer class="footer">
+                    <h3>Best Footer</h3>
+                </footer>
             </body>
         </html>
     )
