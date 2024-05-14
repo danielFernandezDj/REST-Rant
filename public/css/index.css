@@ -10,7 +10,7 @@ body {
 
 /* ******************* Nav Var Section ******************* */
 nav {
-    background-color: cornflowerblue;
+    background-color: rgb(104, 205, 149);
     padding: 10px;
 }
 
@@ -30,7 +30,7 @@ nav a {
 }
 
 nav a:hover {
-    color: pink;
+    color: rgb(24, 24, 24);
     text-decoration: none;
 }
 
