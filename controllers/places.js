@@ -2,7 +2,6 @@ const router = require('express').Router()
 const places = require("../models/places")
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   if (!req.body.pic) {
     // Default image if one is not provided
     req.body.pic = 'http://placekitten.com/400/400'
@@ -32,7 +31,7 @@ router.get('/:id', (req, res) => {
   } else if (!places[id]) {
     res.render('error404')
   } else {
-    console.log(places)
+    console.log('id', id)
     res.render('places/show', { place: places[id], id })
   }
 })
@@ -54,14 +53,20 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
-      res.render('error404')
+    res.render('error404')
   }
   else if (!places[id]) {
-      res.render('error404')
+    res.render('error404')
   }
   else {
-    res.render('places/edit', { place: places[id] })
+    res.render('places/edit', { place: places[id] , id})
   }
+})
+
+router.put('/:id/edit', (req, res) => {
+  console.log('request',req.body)
+  places.push(req.body)
+  res.redirect('/places')
 })
 
 module.exports = router
