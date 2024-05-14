@@ -1,6 +1,6 @@
 const React = require('react')
 
-function Def (html) {
+function Def(html) {
     return (
         <html>
             <head>
@@ -9,10 +9,23 @@ function Def (html) {
                 <link rel="stylesheet" href="/css/index.css" />
             </head>
             <body>
-                { html.children }
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/places">Places</a>
+                        </li>
+                        <li>
+                            <a href="/places/new">Add Place</a>
+                        </li>
+                    </ul>
+                </nav>
                 <footer class="footer">
                     <h3>Best Footer</h3>
                 </footer>
+                {html.children}
             </body>
         </html>
     )
