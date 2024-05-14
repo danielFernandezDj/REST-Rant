@@ -63,10 +63,30 @@ router.get('/:id/edit', (req, res) => {
   }
 })
 
-router.put('/:id/edit', (req, res) => {
-  console.log('request',req.body)
-  places.push(req.body)
-  res.redirect('/places')
-})
+// Put Route
+  router.put('/:id', (req, res) => {
+    let i = Number(req.params.id)
+    if (isNaN(i)) {
+        res.render('error404')
+    }
+    else if (!places[i]) {
+        res.render('error404')
+    }
+    else {
+        // Dig into req.body and make sure data is valid
+        if (!req.body.pic) {
+            req.body.pic = 'http://placekitten.com/400/400'
+        }
+        if (!req.body.city) {
+            req.body.city = 'Anytown'
+        }
+        if (!req.body.state) {
+            req.body.state = 'USA'
+        }
+        // Save the new data into places[i]
+        places[i] = req.body
+        res.redirect(`/places/${i}`)
+    }
+  })  
 
 module.exports = router
