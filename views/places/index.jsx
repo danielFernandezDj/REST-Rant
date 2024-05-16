@@ -3,11 +3,11 @@ const Def = require('../default')
 
 function index(data) {
   console.log(data)
-  let placesFormatted = data.places.map((place, index) => {
+  let placesFormatted = data.places.map((place) => {
     return (
-      <div className="col-sm-6" key={place.id}>
+      <div className="col-sm-6">
         <h2>
-          <a href={`/places/${index}`} >
+          <a href={`/places/${place.id}`} >
             {place.name}
           </a>
         </h2>
@@ -36,3 +36,8 @@ console.log('')
 console.log('In Places.Index.jsx')
 console.log('')
 module.exports = index
+
+
+
+
+
