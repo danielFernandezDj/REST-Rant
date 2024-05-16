@@ -32,5 +32,7 @@ function index(data) {
     </Def>
   )
 }
-
+console.log('')
+console.log('In Places.Index.jsx')
+console.log('')
 module.exports = index

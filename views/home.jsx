@@ -20,5 +20,7 @@ function home() {
     </Def>
   );
 }
-
+console.log('')
+console.log('In Home.home.jsx')
+console.log('')
 module.exports = home;
