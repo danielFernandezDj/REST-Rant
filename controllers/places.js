@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const db = require('../models')
 
+// INDEX
 router.get('/', (req, res) => {
-  // res.send('GET /places stub')
   db.Place.find()
     .then((places) => {
       res.render('places/index', { places })
@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
     })
 })
 
+// PLACES
 router.post('/', (req, res) => {
   if (!req.body.pic) {
-    // Default image if one is not provided
     req.body.pic = 'http://placekitten.com/400/400'
   }
 
@@ -39,15 +39,17 @@ router.post('/', (req, res) => {
     })
 })
 
-
+// NEW
 router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
+// SHOW
 router.get('/:id', (req, res) => {
-  // res.send('GET /places/:id stub')
   db.Place.findById(req.params.id)
+  .populate('comments')
     .then(place => {
+      console.log(place.comments)
       res.render('places/show', { place })
     })
     .catch(err => {
@@ -60,18 +62,22 @@ router.put('/:id', (req, res) => {
   res.send('PUT /places/:id stub')
 })
 
+// DELETE
 router.delete('/:id', (req, res) => {
   res.send('DELETE /places/:id stub')
 })
 
+// EDIT
 router.get('/:id/edit', (req, res) => {
   res.send('GET edit form stub')
 })
 
+// 
 router.post('/:id/rant', (req, res) => {
   res.send('GET /places/:id/rant stub')
 })
 
+// DELETE
 router.delete('/:id/rant/:rantId', (req, res) => {
   res.send('GET /places/:id/rant/:rantId stub')
 })
