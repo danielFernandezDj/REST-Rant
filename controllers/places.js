@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     })
 })
 
-// PLACES
+// PLACE
 router.post('/', (req, res) => {
   if (!req.body.pic) {
     req.body.pic = 'http://placekitten.com/400/400'
