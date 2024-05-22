@@ -16,8 +16,19 @@ function show(data) {
   )
 
   if (data.place.comments.length) {
+    // * New Staff
+    let sumRatings = data.place.comments.reduce((tot, c) => {
+      return tot + c.stars
+    }, 0)
+    let averageRating = sumRatings / data.place.comments.length
+    rating = (
+      <h3>
+        {Math.round(averageRating)} stars
+      </h3>
+    )
+
+    // * OLD staff.
     comments = data.place.comments.map(c => {
-      // ! Im at here 
       return (
         <div className="border" key={c._id}>
           <h2 className="rant">{c.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
@@ -30,6 +41,7 @@ function show(data) {
       );
     });
   }
+
 
   return (
     <Def>
@@ -90,7 +102,7 @@ function show(data) {
               Comments
             </h2>
             <div className='section-mid-comments'>
-            {comments}
+              {comments}
             </div>
           </div>
         </section>
@@ -174,3 +186,6 @@ function show(data) {
 }
 
 module.exports = show;
+
+
+
