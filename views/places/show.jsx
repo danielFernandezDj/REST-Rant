@@ -16,18 +16,19 @@ function show(data) {
   )
 
   if (data.place.comments.length) {
-    // * New Staff
     let sumRatings = data.place.comments.reduce((tot, c) => {
       return tot + c.stars
     }, 0)
-    let averageRating = sumRatings / data.place.comments.length
+    let averageRating = Math.round(sumRatings / data.place.comments.length)
+    let stars = ''
+    for (let i = 0; i < averageRating; i++) {
+      stars += '⭑'
+    }
     rating = (
       <h3>
-        {Math.round(averageRating)} stars
+        {stars} stars
       </h3>
     )
-
-    // * OLD staff.
     comments = data.place.comments.map(c => {
       return (
         <div className="border" key={c._id}>

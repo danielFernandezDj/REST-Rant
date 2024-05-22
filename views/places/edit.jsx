@@ -7,7 +7,7 @@ function edit_form({ place, id }) {
         <Def>
             <main>
                 <h1>Edit Place</h1>
-                <form method="POST" action={`/places/${id}?_method=PUT`} >
+                <form method="POST" action={`/places/${data.place.id}?_method=PUT`} >
                     <div className="row">
                         <div className="form-group col-sm-6">
                             <label htmlFor="name">Place Name</label>
@@ -18,7 +18,7 @@ function edit_form({ place, id }) {
                                 defaultValue={place.name} />
                         </div>
                         <div className="form-group col-sm-6">
-                            <label htmlFor="pic">Place City</label>
+                            <label htmlFor="city">Place City</label>
                             <input id="city" type="text"
                                 name="city"
                                 required
@@ -27,7 +27,7 @@ function edit_form({ place, id }) {
                     </div>
                     <div className="row">
                         <div className="form-group col-sm-6">
-                            <label htmlFor="pic">Place State</label>
+                            <label htmlFor="state">Place State</label>
                             <input id="state" type="text"
                                 name="state"
                                 required
@@ -40,17 +40,25 @@ function edit_form({ place, id }) {
                                 required
                                 defaultValue={place.pic} />
                         </div>
+                        <div className="form-group col-sm-4">
+                            <label htmlFor="founded">Founding Year</label>
+                            <input className="form-control"
+                                id="founded"
+                                name="founded"
+                                value={data.place.founded}
+                            />
+                        </div>
                     </div>
                     <div className="row">
                         <div className="form-group col-sm-6">
-                            <label htmlFor="pic">Place Cuisines</label>
+                            <label htmlFor="cuisines">Place Cuisines</label>
                             <input id="cuisines" type="text"
                                 name="cuisines"
                                 required
                                 defaultValue={place.cuisines} />
                         </div>
                     </div>
-                    <input type="submit" />
+                    <input className="btn btn-primary" type="submit" value="Update Place" />
                 </form>
             </main>
         </Def>
