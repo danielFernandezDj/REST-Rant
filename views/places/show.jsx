@@ -17,6 +17,7 @@ function show(data) {
 
   if (data.place.comments.length) {
     comments = data.place.comments.map(c => {
+      // ! Im at here 
       return (
         <div className="border" key={c._id}>
           <h2 className="rant">{c.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
@@ -88,7 +89,9 @@ function show(data) {
             >
               Comments
             </h2>
+            <div className='section-mid-comments'>
             {comments}
+            </div>
           </div>
         </section>
 
