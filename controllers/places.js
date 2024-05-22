@@ -83,27 +83,39 @@ router.delete('/:id/rant/:rantId', (req, res) => {
   res.send('GET /places/:id/rant/:rantId stub')
 })
 
-// COMMENT
-router.post('/:id/comment', (req, res) => {
-  console.log(req.body)
+// CREATE COMMENT
+router.post("/:id/comment", (req, res) => {
+  console.log(req.body);
+
+  // Ensure that the stars field is correctly parsed as a number
+  req.body.stars = parseFloat(req.body.stars);
+  req.body.rant = req.body.rant ? true : false;
+
   db.Place.findById(req.params.id)
-  .then(place => {
+    .then((place) => {
       db.Comment.create(req.body)
-      .then(comment => {
-          place.comments.push(comment.id)
-          place.save()
-          .then(() => {
-              res.redirect(`/places/${req.params.id}`)
-          })
-      })
-      .catch(err => {
-          res.render('error404')
-      })
-  })
-  .catch(err => {
-      res.render('error404')
-  })
-})
+        .then((comment) => {
+          place.comments.push(comment.id);
+          place
+            .save()
+            .then(() => {
+              res.redirect(`/places/${req.params.id}`);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.render("error404");
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.render("error404");
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render("error404");
+    });
+});
 
 module.exports = router
 
