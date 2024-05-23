@@ -1,6 +1,11 @@
 const router = require('express').Router()
 const db = require('../models')
 
+// NEW
+router.get('/new', (req, res) => {
+  res.render('places/new')
+})
+
 // INDEX
 router.get('/', (req, res) => {
   db.Place.find()
@@ -37,11 +42,6 @@ router.post('/', (req, res) => {
         res.render('error404')
       }
     })
-})
-
-// NEW
-router.get('/new', (req, res) => {
-  res.render('places/new')
 })
 
 // SHOW
@@ -95,13 +95,13 @@ router.post("/:id/comment", (req, res) => {
 // UPDATE
 router.put('/:id', (req, res) => {
   db.Place.findByIdAndUpdate(req.params.id, req.body)
-  .then(() => {
+    .then(() => {
       res.redirect(`/places/${req.params.id}`)
-  })
-  .catch(err => {
+    })
+    .catch(err => {
       console.log('err', err)
       res.render('error404')
-  })
+    })
 })
 
 // DELETE
@@ -116,20 +116,23 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-// EDIT
-router.get('/:id/edit', (req, res) => {
+// EDIT 
+router.get("/:id/edit", (req, res) => {
   db.Place.findById(req.params.id)
-    .then(place => {
-      res.render('error404')
+    .then((place) => {
+      res.render("places/edit", { place });
     })
-})
+    .catch((err) => {
+      res.render("error404");
+    });
+});
 
-// EDIT
+// Rant
 router.post('/:id/rant', (req, res) => {
   res.send('GET /places/:id/rant stub')
 })
 
-// DELETE
+// DELETE Stub
 router.delete('/:id/rant/:rantId', (req, res) => {
   res.send('GET /places/:id/rant/:rantId stub')
 })

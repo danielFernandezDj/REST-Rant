@@ -22,9 +22,9 @@ function Def(html) {
                         </li>
                     </ul>
                 </nav>
-                <footer className="footer">
+                {/* <footer className="footer">
                     <h3>Best Footer</h3>
-                </footer>
+                </footer> */}
                 {html.children}
             </body>
         </html>

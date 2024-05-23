@@ -1,13 +1,13 @@
-const React = require('react')
-const Def = require('../default')
+const React = require('react');
+const Def = require('../default');
 
 function index(data) {
-  console.log(data)
+  console.log(data);
   let placesFormatted = data.places.map((place) => {
     return (
-      <div className="col-sm-6">
+      <div className="col-sm-6" key={place.id}>
         <h2>
-          <a href={`/places/${place.id}`} >
+          <a href={`/places/${place.id}`}>
             {place.name}
           </a>
         </h2>
@@ -19,8 +19,8 @@ function index(data) {
           Located in {place.city}, {place.state}
         </p>
       </div>
-    )
-  })
+    );
+  });
   return (
     <Def>
       <main>
@@ -30,15 +30,11 @@ function index(data) {
         </div>
       </main>
     </Def>
-  )
+  );
 }
-console.log('')
-console.log('In Places.Index.jsx')
-console.log('')
 
-module.exports = index
+console.log('');
+console.log('In Places.Index.jsx');
+console.log('');
 
-
-
-
-
+module.exports = index;

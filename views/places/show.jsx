@@ -76,17 +76,16 @@ function show(data) {
             </h4>
           </div>
 
-
           <div className='show-edit-delete-buttons'>
             <button className="btn btn-warning"
               style={{ marginRight: '10px' }}
             >
-              <a href={`/places/${data.place._id}/edit`}>
+              <a href={`/places/${data.place.id}/edit`}>
                 Edit
               </a>
             </button>
 
-            <form method="POST" action={`/places/${data.place._id}?_method=DELETE`}>
+            <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}>
               <button type="submit" className="btn btn-danger">
                 Delete
               </button>

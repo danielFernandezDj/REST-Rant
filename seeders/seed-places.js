@@ -1,3 +1,4 @@
+
 const db = require('../models')
 
 db.Place.create([{
