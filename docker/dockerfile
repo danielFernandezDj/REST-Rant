@@ -1,0 +1,24 @@
+# Use the official Node.js image as a base image
+FROM node:14
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Set NODE_ENV to production
+ENV NODE_ENV=production
+
+# Install dependencies with the --legacy-peer-deps flag
+RUN --mount=type=cache,id=s/3546909e-4fa3-4a9d-bba4-b05cf129e59e-/root/npm,target=/root/.npm \
+    npm ci --legacy-peer-deps
+
+# Copy the rest of your application code
+COPY . .
+
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Command to run the application
+CMD ["npm", "start"]
