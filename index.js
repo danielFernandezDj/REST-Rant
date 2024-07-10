@@ -5,7 +5,7 @@ const methodOverride = require('method-override')
 const app = express()
 
 // Listen for connection.
-app.listen(process.env.PORT) || 3000
+app.listen(process.env.PORT) || 3001
 
 // Express Settings
 // app.set('views', __dirname + '/views')
@@ -30,6 +30,3 @@ app.get('/', (req, res) => {
 app.get('*', (req, res) => {
     res.status(404).render('error404')
 })
-
-
-

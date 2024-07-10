@@ -2,6 +2,15 @@
 
 REST-Rant is an app where users can review restaurants.
 
+##Technologies Used:
+### •dotenv
+### •Express
+### •express-react-views
+### •method-
+### •
+### •
+### •
+### •
 
 Method | Path | Purpose 
 -------|-------|--------
